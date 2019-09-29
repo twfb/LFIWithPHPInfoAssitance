@@ -18,8 +18,8 @@
     - https://github.com/dhgdhg/LFI-With-PHPInfo-Assitance
 
 - 测试结果
-    - ![](https://img2018.cnblogs.com/blog/1043898/201909/1043898-20190929145648321-1378560911.png)
+    - ![](images/lfi1.jpg)
 
-    - ![](https://img2018.cnblogs.com/blog/1043898/201909/1043898-20190929145556471-1449404554.png)
+    - ![](images/lfi2.png)
 
 - 参考: https://dl.packetstormsecurity.net/papers/general/LFI_With_PHPInfo_Assitance.pdf
