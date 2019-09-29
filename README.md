@@ -15,8 +15,9 @@
     3. 通过lfi页面包含shell文件, 并传参, 从而进行利用
 
 - 环境部署
-    - https://github.com/dhgdhg/LFI-With-PHPInfo-Assitance
-
+    - 将lfi_phpinfo文件夹放到测试网站目录下
+    - 然后修改lfi_phpinfo.py 中的参数然后执行
+    
 - 测试结果
     - ![](images/lfi1.jpg)
 
